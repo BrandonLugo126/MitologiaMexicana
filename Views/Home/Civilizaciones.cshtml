@@ -1,0 +1,55 @@
+﻿@model List<MitologiaMexicana.Models.ViewModels.CivilizacionesViewModels>
+@{
+    Layout = "Layout";
+}
+<section class="civilizaciones-codice">
+    <h2>Explora las Civilizaciones</h2>
+    <p>Haz clic en cada civilización para conocer su historia y cultura.</p>
+
+    <div class="decorative-border"></div>
+
+    <div class="cards-grid">     
+        @foreach (var civilizaciones in Model)
+        {
+            <div class="card">
+                <img src="~/imagenes/@(civilizaciones.Nombre).jpg" alt="Olmecas">
+                <div class="card-body">
+                    <h3>@civilizaciones.Nombre</h3>
+                    <button class="btn-toggle-info"><i class="fa-solid fa-chevron-down"></i> Información</button>
+                    <div class="card-info">
+                        <p><strong>Periodo:</strong> @civilizaciones.Periodo</p>
+                        <p><strong>Región:</strong> @civilizaciones.Region</p>
+                        <p><strong>Capital:</strong> @civilizaciones.Capital</p>
+                        <p><strong>Lengua:</strong>@civilizaciones.Lengua</p>
+                        <p><strong>Descripción:</strong>@civilizaciones.Descripcion</p>
+                        <a href="~/Home/Dioses/@civilizaciones.Nombre" class="btn-dioses">Ver dioses</a>
+                    </div>
+                </div>
+            </div>
+        }      
+        <!-- Más cards según la base de datos -->
+    </div>
+
+    <div class="decorative-border"></div>
+</section>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const buttons = document.querySelectorAll('.btn-toggle-info');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const icon = btn.querySelector('i');
+                const info = btn.nextElementSibling;
+
+                if (info.style.display === 'block') {
+                    info.style.display = 'none';
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    info.style.display = 'block';
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                }
+            });
+        });
+    });
+</script>
