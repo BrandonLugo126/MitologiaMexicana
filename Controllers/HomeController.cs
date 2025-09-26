@@ -21,12 +21,12 @@ namespace MitologiaMexicana.Controllers
                 .ToList();
 
             var random = new Random();
-            var civilizaciones = todas
+            var vm = todas
                 .OrderBy(c => random.Next())
                 .Take(3)
                 .ToList();
 
-            return View(civilizaciones);
+            return View(vm);
         }
         public IActionResult Civilizaciones()
         {

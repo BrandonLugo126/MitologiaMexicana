@@ -5,7 +5,6 @@ namespace MitologiaMexicana.Models.ViewModels
     public class DiosesViewModel
     {
         public string Civilizacion { get; set; } = null!;
-        public string Dios { get; set; } = "";
         public List<string> civilizaciones { get; set; } = new();
         public List<DiosModel> Dioses { get; set; } = new();
 
